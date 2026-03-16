@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="cs">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>PadelScore - Voice Edition</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="lang-switch">
+         <button id="lang-cz" class="lang-btn active" onclick="setLanguage('cs')">CZ</button>
+         <button id="lang-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+      </div>
+      <button class="fullscreen-btn" onclick="toggleFullscreen()" id="fs-btn">
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="#666">
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+         </svg>
+      </button>
+      <div id="setup-screen">
+         <div class="teams-setup-container">
+            <div class="setup-group">
+               <h2 data-i18n="teamAlpha">Tým Alpha</h2>
+               <div class="player-row">
+                  <input type="text" id="p0" placeholder="Hráč 1" data-i18n-placeholder="player1">
+                  <div class="radio-label-box">
+                     <input type="radio" name="server" value="0" id="r0">
+                     <span data-i18n="serve">Podání</span>
+                  </div>
+               </div>
+               <div class="player-row">
+                  <input type="text" id="p1" placeholder="Hráč 2" data-i18n-placeholder="player2">
+                  <div class="radio-label-box">
+                     <input type="radio" name="server" value="1" id="r1">
+                     <span data-i18n="serve">Podání</span>
+                  </div>
+               </div>
+            </div>
+            <div class="setup-group">
+               <h2 data-i18n="teamBeta">Tým Beta</h2>
+               <div class="player-row">
+                  <input type="text" id="p2" placeholder="Hráč 3" data-i18n-placeholder="player3">
+                  <div class="radio-label-box">
+                     <input type="radio" name="server" value="2" id="r2">
+                     <span data-i18n="serve">Podání</span>
+                  </div>
+               </div>
+               <div class="player-row">
+                  <input type="text" id="p3" placeholder="Hráč 4" data-i18n-placeholder="player4">
+                  <div class="radio-label-box">
+                     <input type="radio" name="server" value="3" id="r3">
+                     <span data-i18n="serve">Podání</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <button class="start-btn" onclick="startMatch()" data-i18n="playButton">HRAJ PADEL</button>
+      </div>
+      <div id="match-screen">
+         <div class="header-container">
+            <div class="games-header">
+               <div class="set-score-container">
+                  <span class="set-label">SETS</span>
+                  <div class="set-value" id="sets-0">0</div>
+               </div>
+
+               <div class="game-column">
+                  <div class="game-label" data-i18n="alpha">Alpha</div>
+                  <div class="game-count" id="games-0">0</div>
+               </div>
+
+               <div style="color: #222; font-size: 2rem; font-weight: 900;">—</div>
+
+               <div class="game-column">
+                  <div class="game-label" data-i18n="beta">Beta</div>
+                  <div class="game-count" id="games-1">0</div>
+               </div>
+
+               <div class="set-score-container">
+                  <span class="set-label">SETS</span>
+                  <div class="set-value" id="sets-1">0</div>
+               </div>
+            </div>
+         </div>
+         <div class="court">
+            <div id="serve-announcement">
+               <div style="color: var(--text-dim); font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 10px;" id="status-label" data-i18n="isServing">PODÁVÁ</div>
+               <div class="server-name" id="announcement-name">-</div>
+            </div>
+            <div class="team-side" onclick="addPoint(0)">
+               <div class="team-title" data-i18n="teamAlpha">Tým Alpha</div>
+               <div class="points-display" id="pts-0">0</div>
+            </div>
+            <div class="team-side" onclick="addPoint(1)">
+               <div class="team-title" data-i18n="teamBeta">Tým Beta</div>
+               <div class="points-display" id="pts-1">0</div>
+            </div>
+         </div>
+         <div class="controls-hint" id="controls-text">↑ REDO | ↓ ZPĚT | ← ALPHA | → BETA</div>
+         <div class="footer-btns">
+            <button class="btn-small" onclick="undo()" data-i18n="undo">Zpět (↓)</button>
+            <button class="btn-small" onclick="redo()" data-i18n="redo">Vpřed (↑)</button>
+            <button class="btn-small" onclick="confirmReset()" data-i18n="reset">Reset</button>
+         </div>
+      </div>
+      <script src="script.js"></script>
+   </body>
+</html>
