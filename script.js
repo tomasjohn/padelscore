@@ -151,7 +151,7 @@
              if (sIdx === 3 && rIdx === 3) text = t.ttsDeuce;
              else if (sIdx === 4) text = t.ttsAdv + " " + servingTeamName;
              else if (rIdx === 4) text = t.ttsAdv + " " + receivingTeamName;
-             else if (sIdx === rIdx && sIdx !== 0) text = currentLang === 'cs' ? pointValues[sIdx] + " " + pointValues[sIdx] : pointValues[sIdx] + " " + t.ttsAll;
+             else if (sIdx === rIdx && sIdx !== 0) text = currentLang === 'cs' ? pointValues[sIdx] + ", " + pointValues[sIdx] : pointValues[sIdx] + " " + t.ttsAll;
              else text = pointValues[sIdx] + ", " + pointValues[rIdx];
              speakText(text);
          }
